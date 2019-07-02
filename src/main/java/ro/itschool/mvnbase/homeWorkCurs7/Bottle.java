@@ -27,6 +27,10 @@ public class Bottle {
     }
 
 
+    public boolean hasMore(){
+        return availableLiquid>0;
+    }
+
     public int availabelLiquid(){
         return availableLiquid;
     }
@@ -55,8 +59,8 @@ public class Bottle {
 
     public String drinkFromBottle(int drinkLiquid){
         if (bootleStatus==true){
-            if (drinkLiquid<availableLiquid){
-                availableLiquid-=drinkLiquid;
+            if (drinkLiquid<=availableLiquid){
+                this.availableLiquid-=drinkLiquid;
                 return "You drink "+drinkLiquid+". Available liquid is "+availableLiquid;
             } else{
                 return "Sorry, you drink too much! Your available liquid is "+availableLiquid;
