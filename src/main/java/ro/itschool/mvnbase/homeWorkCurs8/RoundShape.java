@@ -5,11 +5,11 @@ public abstract class RoundShape implements Shape {
     protected double centerX=0;
     protected double centerY=0;
 
-    double getCenterX(double centerX){
+    double getCenterX(){
         return centerX;
     }
 
-    double getCenterY(double centerY){
+    double getCenterY(){
         return centerY;
     }
 }
