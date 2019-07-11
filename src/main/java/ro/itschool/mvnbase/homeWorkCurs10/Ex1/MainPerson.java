@@ -28,25 +28,25 @@ public class MainPerson {
         return personName;
     }
 
-    public static List<String> personByAge(List<Person>person,int age){
+    public static List<String> personByAge(List<Person>persons,int age){
         List<String> personByAge = new ArrayList<>();
-        for (Person element: person){
-            if(element.getAge()>age){
-                personByAge.add(element.getName());
+        for (Person person: persons){
+            if(person.getAge()>age){
+                personByAge.add(person.getName());
             }
         }
         return personByAge;
     }
 
-    public static Map<String,List<String>> mapHairColor(List<Person>person){
+    public static Map<String,List<String>> mapHairColor(List<Person>persons){
         Map<String,List<String>> mapHair =new HashMap<>();
-        for (Person pers:person){
-            List<String> name=mapHair.get(pers.getHairColor());
+        for (Person person:persons){
+            List<String> name=mapHair.get(person.getHairColor());
             if (name==null){
                 name=new ArrayList<>();
-                mapHair.put(pers.getHairColor(),name);
+                mapHair.put(person.getHairColor(),name);
             }
-            name.add(pers.getName());
+            name.add(person.getName());
         }
         return mapHair;
     }

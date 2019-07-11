@@ -15,7 +15,7 @@ public class MainEmployee {
         employees.add(new Employee("Anabelle", 40, "red", "KFC", 500));
         employees.add(new Employee("Diego", 25, "brown", "Mercedes", 3000));
         employees.add(new Employee("Clementina", 28, "black", "RER", 400));
-        employees.add(new Employee("Natalia", 28, "red", "Studio20", 2000));
+        employees.add(new Employee("Natalia", 28, "red", "Studio", 2000));
 
         System.out.println(employeeBySalary(employees, 800));
         System.out.println(mapCompany(employees));
