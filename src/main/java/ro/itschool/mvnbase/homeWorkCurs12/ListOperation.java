@@ -7,17 +7,18 @@ public class ListOperation {
     private final List<String> second;
 
 
+    //protejam mai bine din constructor
+
     public ListOperation(List<String> first, List<String> second) {
-        this.first = first;
-        this.second = second;
+        this.first=first==null? new ArrayList<>():first;
+        this.second=second==null? new ArrayList<>():second;
     }
 
     public boolean compare() {
         List<String> first = new ArrayList<>(this.first);
         List<String> second = new ArrayList<>(this.second);
-        if (first == null && second == null) {
-            return true;
-        } else if ((first == null && second != null) || (first != null && second == null) || (first.size() != second.size())) {
+
+        if (first.size() != second.size() ){
             return false;
         }
         Collections.sort(first);
@@ -27,73 +28,34 @@ public class ListOperation {
 
 
     public List<String> intersect() {
-        List<String> first = new ArrayList<>(this.first);
-        List<String> second = new ArrayList<>(this.second);
-        List<String> intersectedList = new ArrayList<>();
-        if(verification(first,second)){
-            return null;
-        }
-        Collections.sort(first);
-        Collections.sort(second);
+        Set<String> intersectedList = new HashSet<>();
         for (String secondElement : second) {
-            for (String firsElement : first) {
-                if (firsElement.contains(secondElement)) {
-                    if (!intersectedList.contains(firsElement)){
-                        intersectedList.add(firsElement);
-                    }
+                if (first.contains(secondElement)) {
+                        intersectedList.add(secondElement);
                 }
-            }
+
         }
-        return intersectedList;
+        return new ArrayList<>( intersectedList);
     }
 
     public List<String>union(){
-        List<String> first = new ArrayList<>(this.first);
-        List<String> second = new ArrayList<>(this.second);
-        List<String> union = new ArrayList<>();
-        if(verification(first,second)){
-            return null;
-        }
-        for (String firstElement:first){
-            if (!union.contains(firstElement)){
-                union.add(firstElement);
-            }
-        }
+        Set<String> union = new HashSet<>(first);
         for (String secondElemen:second){
-            if (!union.contains(secondElemen)){
                 union.add(secondElemen);
-            }
         }
-        return union;
+        return new ArrayList<>(union);
     }
 
     public List<String> substract(){
-        List<String> first = new ArrayList<>(this.first);
-        List<String> second = new ArrayList<>(this.second);
         List<String> substract = new ArrayList<>(first);
-        if(verification(first,second)){
-            return null;
-        }
-        Collections.sort(first);
-        Collections.sort(second);
         for (String secondElement : second) {
-            for (String firsElement : first) {
-                if (secondElement.contains(firsElement)) {
-                    substract.remove(firsElement);
+                while (first.contains(secondElement)) {
+                    substract.remove(secondElement);
                 }
-            }
         }
         return substract;
     }
 
-    public boolean verification(List<String> first,List<String>second){
-        if (first == null && second == null) {
-            return true;
-        } else if ((first == null && second != null) || (first != null && second == null)) {
-            return true;
-        }
-        return false;
-    }
 
 
 }
