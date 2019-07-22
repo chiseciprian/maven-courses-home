@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.regex.Pattern;
 
 
 public class PersonFileReader {
@@ -17,13 +16,15 @@ public class PersonFileReader {
         this.personList = fetchPerson(path);
     }
 
+
+
     private List<Person> fetchPerson(String path) throws IOException {
         List<Person>result=new ArrayList<>();
         BufferedReader bufferedReader=new BufferedReader(new FileReader(path));
         String line;
         String[] splitResult ;
         while ((line=bufferedReader.readLine()) != null){
-           splitResult= line.split(Pattern.quote("|"));
+           splitResult= line.split("\\|");
             result.add(new Person(UUID.randomUUID().toString(),splitResult[0],splitResult[1],Integer.parseInt(splitResult[2])));
         }
         return result;
@@ -34,5 +35,9 @@ public class PersonFileReader {
         return "PersonFileReader{" +
                 "personList=" + personList +
                 '}';
+    }
+
+    public List<Person> getPersonList() {
+        return personList;
     }
 }

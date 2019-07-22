@@ -5,6 +5,6 @@ import java.io.IOException;
 public class Main4 {
     public static void main(String[] args) throws IOException {
         PersonFileReader personFileReader =new PersonFileReader("src/main/resources/person.in");
-        System.out.printf(personFileReader.toString());
+        System.out.println(personFileReader.getPersonList());
     }
 }
