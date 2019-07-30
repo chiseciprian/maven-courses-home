@@ -10,6 +10,8 @@ public class CountryStatistics {
         this.contryList = contryList;
     }
 
+
+
     public List<Contry> getAllCountries() {
         return new ArrayList<>(contryList);
     }
